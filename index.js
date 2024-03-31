@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const serverless = require("serverless-http");
 
 // auth
 require('./auth/passport')(passport);
@@ -52,3 +53,5 @@ const port = process.env.PORT || 8666;
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+module.exports.handler = serverless(app);
